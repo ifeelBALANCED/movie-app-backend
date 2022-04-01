@@ -4,6 +4,7 @@ import { AppModule } from './app.module'
 import { swaggerConfig } from "./config/swagger.config";
 
 const bootstrap = async () => {
+	const port = process.env.PORT || 5000;
 	const app = await NestFactory.create(AppModule)
 	app.setGlobalPrefix('api')
 	const options: SwaggerDocumentOptions = {
@@ -14,7 +15,7 @@ const bootstrap = async () => {
 	}
 	const document = SwaggerModule.createDocument(app, swaggerConfig, options);
 	SwaggerModule.setup('api', app, document, customOptions);
-	await app.listen(4200)
+	await app.listen(port)
 }
 
 bootstrap()
