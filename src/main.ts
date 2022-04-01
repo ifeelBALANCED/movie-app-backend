@@ -7,6 +7,7 @@ const bootstrap = async () => {
 	const port = process.env.PORT || 5000;
 	const app = await NestFactory.create(AppModule)
 	app.setGlobalPrefix('api')
+	app.enableCors();
 	const options: SwaggerDocumentOptions = {
 		deepScanRoutes: true
 	};
